@@ -4,7 +4,8 @@ pipeline {
   stages { 
     stage('Prep Environment') {
       steps {
-        sh """curl -sSL https://get.rvm.io | bash -s stable
+        sh """#!/bin/bash
+        curl -sSL https://get.rvm.io | bash -s stable
         source /.rvm/scripts/rvm
         rvm use $rubyVersion
         which bundle || gem install bundler
