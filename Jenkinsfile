@@ -7,7 +7,7 @@ pipeline {
         sh """#!/bin/bash
         curl -sSL https://get.rvm.io | bash -s stable
         source /.rvm/scripts/rvm
-        rvm install $rubyVersion
+        rvm install ruby-$rubyVersion
         rvm use $rubyVersion
         which bundle || gem install bundler
         bundle install"""
