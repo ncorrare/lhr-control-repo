@@ -37,7 +37,6 @@ def withRvm(Closure stage) {
   RVM_HOME = '$HOME/.rvm'
 
   paths = [
-      "$RVM_HOME/gems/$rubyVersion@$rvmGemset/bin",
       "$RVM_HOME/gems/$rubyVersion@global/bin",
       "$RVM_HOME/rubies/$rubyVersion/bin",
       "$RVM_HOME/bin",
@@ -45,8 +44,7 @@ def withRvm(Closure stage) {
   ]
 
   env.PATH = paths.join(':')
-  env.GEM_HOME = "$RVM_HOME/gems/$rubyVersion@$rvmGemset"
-  env.GEM_PATH = "$RVM_HOME/gems/$rubyVersion@$rvmGemset:$RVM_HOME/gems/$rubyVersion@global"
+  env.GEM_PATH = "$RVM_HOME/gems/$rubyVersion@global"
   env.MY_RUBY_HOME = "$RVM_HOME/rubies/$rubyVersion"
   env.IRBRC = "$RVM_HOME/rubies/$rubyVersion/.irbrc"
   env.RUBY_VERSION = "$rubyVersion"
