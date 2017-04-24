@@ -35,7 +35,7 @@ pipeline {
 
 def withRvm(Closure stage) {
   rubyVersion = "ruby-$ruby"
-  RVM_HOME = '.rvm'
+  RVM_HOME = '/.rvm'
 
   paths = [
       "$RVM_HOME/gems/$rubyVersion@global/bin",
@@ -50,7 +50,7 @@ def withRvm(Closure stage) {
   env.IRBRC = "$RVM_HOME/rubies/$rubyVersion/.irbrc"
   env.RUBY_VERSION = "$rubyVersion"
   sh """curl -sSL https://get.rvm.io | bash -s stable
-  /.rvm/scripts/rvm
+  source /.rvm/scripts/rvm
   rvm use $ruby"""
 
   stage()
