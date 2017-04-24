@@ -63,7 +63,8 @@ def rake(String command) {
 }
 
 def rvm(String command) {
-  sh "rvm $command"
+  sh """/.rvm/scripts/rvm
+  rvm $command"""
 }
 
 // Exception helper
