@@ -22,7 +22,6 @@ pipeline {
         echo 'done'
         }
         
-      }
     }
   }
   environment {
