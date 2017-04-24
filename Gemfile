@@ -14,3 +14,6 @@ gem 'coveralls', require: false
 #Tools to deploy automatically to the Puppet Forge
 gem 'puppet-blacksmith'
 gem 'slack-notifier'
+#Provide Jenkins Readable Output
+gem 'ci_reporter'
+gem 'ci_reporter_rspec'
