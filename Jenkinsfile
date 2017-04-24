@@ -2,10 +2,12 @@ pipeline {
   agent any
   stages { 
     stage('Prep Environment') {
+      steps {
         sh '''#!/bin/bash
         source /etc/profile.d/rvm.sh
         bundle install --path=.bundle/gems/
         '''
+      }
     }
     stage('Parsing Checks') {
       steps {
