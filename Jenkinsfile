@@ -1,4 +1,4 @@
-def ruby = '2.1.9'
+ruby = '2.1.9'
 pipeline {
   agent any
   stages { 
