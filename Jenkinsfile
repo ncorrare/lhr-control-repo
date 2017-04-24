@@ -34,8 +34,6 @@ pipeline {
 }
 
 def withRvm(Closure stage) {
-  sh 'gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3'
-  sh 'curl -sSL https://get.rvm.io | bash -s stable'
   rubyVersion = "ruby-$ruby"
   RVM_HOME = '.rvm'
 
@@ -51,7 +49,8 @@ def withRvm(Closure stage) {
   env.MY_RUBY_HOME = "$RVM_HOME/rubies/$rubyVersion"
   env.IRBRC = "$RVM_HOME/rubies/$rubyVersion/.irbrc"
   env.RUBY_VERSION = "$rubyVersion"
-  sh """/.rvm/scripts/rvm
+  sh """curl -sSL https://get.rvm.io | bash -s stable
+  /.rvm/scripts/rvm
   rvm use $ruby"""
 
   stage()
