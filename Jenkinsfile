@@ -3,8 +3,10 @@ pipeline {
   stages { 
     stage('Prep Environment') {
       steps {
-        sh 'which bundle || gem install bundler'
-        sh 'bundle install'
+        withRvm {
+          sh 'which bundle || gem install bundler'
+          sh 'bundle install'
+        }
       }
     }
     stage('Parsing Checks') {
