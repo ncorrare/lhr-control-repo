@@ -1,3 +1,4 @@
+def ruby = '2.1.9'
 pipeline {
   agent any
   stages { 
@@ -35,8 +36,9 @@ pipeline {
 def withRvm(Closure stage) {
   sh 'gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3'
   sh 'curl -sSL https://get.rvm.io | bash -s stable'
-  rubyVersion = 'ruby-2.1.9'
-  RVM_HOME = '$HOME/.rvm'
+  rubyVersion = "ruby-$ruby"
+  sh '.rvm/scripts/rvm'
+  RVM_HOME = '.rvm'
 
   paths = [
       "$RVM_HOME/gems/$rubyVersion@global/bin",
@@ -50,6 +52,7 @@ def withRvm(Closure stage) {
   env.MY_RUBY_HOME = "$RVM_HOME/rubies/$rubyVersion"
   env.IRBRC = "$RVM_HOME/rubies/$rubyVersion/.irbrc"
   env.RUBY_VERSION = "$rubyVersion"
+  rvm "use $ruby"
 
   stage()
 }
@@ -57,6 +60,10 @@ def withRvm(Closure stage) {
 // Helper function for rake
 def rake(String command) {
   sh "bundle exec rake $command"
+}
+
+def rvm(String $command) {
+  sh "rvm $command"
 }
 
 // Exception helper
