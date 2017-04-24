@@ -62,7 +62,7 @@ def rake(String command) {
   sh "bundle exec rake $command"
 }
 
-def rvm(String $command) {
+def rvm(String command) {
   sh "rvm $command"
 }
 
