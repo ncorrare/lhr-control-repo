@@ -52,7 +52,7 @@ def withRvm(Closure stage) {
   env.MY_RUBY_HOME = "$RVM_HOME/rubies/$rubyVersion"
   env.IRBRC = "$RVM_HOME/rubies/$rubyVersion/.irbrc"
   env.RUBY_VERSION = "$rubyVersion"
-  rvm "use $ruby"
+  sh "rvm use $ruby"
 
   stage()
 }
@@ -60,11 +60,6 @@ def withRvm(Closure stage) {
 // Helper function for rake
 def rake(String command) {
   sh "bundle exec rake $command"
-}
-
-def rvm(String command) {
-  sh """/.rvm/scripts/rvm
-  rvm $command"""
 }
 
 // Exception helper
