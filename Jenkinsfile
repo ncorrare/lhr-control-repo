@@ -1,15 +1,20 @@
 pipeline {
-  agent any
-  stages { 
+  agent {
+    node {
+      label 'nomad'
+    }
+    
+  }
+  stages {
     stage('Prep Environment') {
       steps {
-        sh """#!/bin/bash
+        sh '''"""#!/bin/bash
         curl -sSL https://get.rvm.io | bash -s stable
         source /.rvm/scripts/rvm
         rvm install ruby-2.1.9
         rvm use 2.1.9
         which bundle || gem install bundler
-        bundle install"""
+        bundle install"""'''
       }
     }
     stage('Parsing Checks') {
@@ -32,13 +37,4 @@ pipeline {
     puppetmaster = 'puppet.service.lhr.consul'
     PATH="/bin:/usr/bin:/sbin:/usr/sbin:/.rvm/gems/ruby-2.1.9@global/bin:/.rvm/rubies/ruby-$rubyVersion/bin:/.rvm/bin"
   }
-}
-
-// Exception helper
-def handleException(Exception err) {
-  println(err.toString());
-  println(err.getMessage());
-  println(err.getStackTrace());
-
-  throw err
 }
