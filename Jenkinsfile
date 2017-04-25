@@ -18,12 +18,18 @@ pipeline {
     }
     stage('Parsing Checks') {
       steps {
-        sh 'rake validate'
+        sh '''#!/bin/bash
+        source /etc/profile.d/rvm.sh
+        rake validate
+        '''
       }
     }
     stage('Linting Checks') {
       steps {
-        sh 'rake lint'
+        sh '''#!/bin/bash
+        source /etc/profile.d/rvm.sh
+        rake lint
+        '''
       }
     }
     stage('Deploy') {
