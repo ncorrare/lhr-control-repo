@@ -35,6 +35,6 @@ pipeline {
   }
   environment {
     puppetmaster = 'puppet.service.lhr.consul'
-    PATH="/bin:/usr/bin:/sbin:/usr/sbin:/.rvm/gems/ruby-2.1.9@global/bin:/.rvm/rubies/ruby-$rubyVersion/bin:/.rvm/bin"
+    PATH="/bin:/usr/bin:/sbin:/usr/sbin:/.rvm/gems/ruby-2.1.9@global/bin:/.rvm/rubies/ruby-2.1.9/bin:/.rvm/bin"
   }
 }
