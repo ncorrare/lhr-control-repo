@@ -10,7 +10,7 @@ pipeline {
       steps {
         sh '''#!/bin/bash
         curl -sSL https://get.rvm.io | bash -s stable
-        source /.rvm/scripts/rvm
+        source /etc/profile.d/rvm.sh
         rvm install ruby-2.1.9
         rvm use 2.1.9
         which bundle || gem install bundler
