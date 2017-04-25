@@ -8,13 +8,13 @@ pipeline {
   stages {
     stage('Prep Environment') {
       steps {
-        sh '''"""#!/bin/bash
+        sh '''#!/bin/bash
         curl -sSL https://get.rvm.io | bash -s stable
         source /.rvm/scripts/rvm
         rvm install ruby-2.1.9
         rvm use 2.1.9
         which bundle || gem install bundler
-        bundle install"""'''
+        bundle install'''
       }
     }
     stage('Parsing Checks') {
