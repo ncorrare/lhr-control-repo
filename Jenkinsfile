@@ -1,4 +1,3 @@
-rubyVersion = '2.1.9'
 pipeline {
   agent any
   stages { 
@@ -7,8 +6,8 @@ pipeline {
         sh """#!/bin/bash
         curl -sSL https://get.rvm.io | bash -s stable
         source /.rvm/scripts/rvm
-        rvm install ruby-$rubyVersion
-        rvm use $rubyVersion
+        rvm install ruby-2.1.9
+        rvm use 2.1.9
         which bundle || gem install bundler
         bundle install"""
       }
@@ -31,7 +30,7 @@ pipeline {
   }
   environment {
     puppetmaster = 'puppet.service.lhr.consul'
-    PATH="/bin:/usr/bin:/sbin:/usr/sbin:/.rvm/gems/ruby-$rubyVersion@global/bin:/.rvm/rubies/ruby-$rubyVersion/bin:/.rvm/bin"
+    PATH="/bin:/usr/bin:/sbin:/usr/sbin:/.rvm/gems/ruby-2.1.9@global/bin:/.rvm/rubies/ruby-$rubyVersion/bin:/.rvm/bin"
   }
 }
 
