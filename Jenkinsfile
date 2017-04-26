@@ -1,3 +1,8 @@
+def projectProperties = [
+    [$class: 'BuildDiscarderProperty',strategy: [$class: 'LogRotator', numToKeepStr: '3']],
+]
+properties(projectProperties)
+
 pipeline {
   agent {
     node {
