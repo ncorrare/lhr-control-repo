@@ -30,4 +30,5 @@ node default {
   # Example:
   #   class { 'my_class': }
   hiera('classes')
+  include profile::base
 }
